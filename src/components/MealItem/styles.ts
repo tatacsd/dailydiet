@@ -1,7 +1,6 @@
-import { SafeAreaView } from 'react-native-safe-area-context';
 import styled, { DefaultTheme } from 'styled-components/native';
 
-export const Container = styled(SafeAreaView)`
+export const ListContainer = styled.View`
   flex: 1;
   width: 100%;
   max-height: 50px;

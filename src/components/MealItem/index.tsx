@@ -1,7 +1,7 @@
 import { Meal } from '@models/meal';
 import { Circle } from 'phosphor-react-native';
 import { useTheme } from 'styled-components';
-import { Container, MealName, MealTime, MealTimeContainer } from './styles';
+import { ListContainer, MealName, MealTime, MealTimeContainer } from './styles';
 
 type MealItemProps = Pick<Meal, 'name' | 'date' | 'isMealWithinDiet'>;
 
@@ -16,7 +16,7 @@ export function MealItem({ name, date, isMealWithinDiet }: MealItemProps) {
   const { COLORS } = useTheme();
 
   return (
-    <Container>
+    <ListContainer>
       <MealTimeContainer>
         <MealTime>{formatTime(date)}</MealTime>
       </MealTimeContainer>
@@ -28,6 +28,6 @@ export function MealItem({ name, date, isMealWithinDiet }: MealItemProps) {
         color={isMealWithinDiet ? COLORS.GREEN_LIGHT : COLORS.RED_LIGHT}
         weight="fill"
       />
-    </Container>
+    </ListContainer>
   );
 }
