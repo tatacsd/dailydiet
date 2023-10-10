@@ -1,12 +1,12 @@
+import { Loading } from '@components/Loading';
 import {
   Nunito_400Regular,
   Nunito_700Bold,
   useFonts,
 } from '@expo-google-fonts/nunito';
-import { Home } from '@screens/Home';
+import { Routes } from '@routes/index';
+import { StatusBar } from 'react-native';
 import { ThemeProvider } from 'styled-components';
-// import { Groups } from '@screens/Groups';
-import { ActivityIndicator } from 'react-native';
 import theme from './src/theme';
 
 export default function App() {
@@ -17,7 +17,12 @@ export default function App() {
   });
   return (
     <ThemeProvider theme={theme}>
-      {fontLoaded ? <Home /> : <ActivityIndicator />}
+      <StatusBar
+        barStyle="dark-content"
+        backgroundColor="transparent"
+        translucent
+      />
+      {fontLoaded ? <Routes /> : <Loading />}
     </ThemeProvider>
   );
 }
