@@ -37,7 +37,6 @@ export const Container = styled(TouchableOpacity)<ButtonProps>`
 
 export const Title = styled.Text<ButtonProps>`
   color: ${({ theme, buttonType }: { theme: DefaultTheme } & ButtonProps) => {
-    console.log('buttonType -> Title:', buttonType);
     return buttonType === 'PRIMARY'
       ? theme.COLORS.GRAY_200
       : theme.COLORS.WHITE;
