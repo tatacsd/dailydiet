@@ -1,11 +1,14 @@
 import { Header } from '@components/Header';
 import { Meals } from '@components/Meals';
 import { PercentageContainer } from '@components/PercentageContainer';
+import { useNavigation } from '@react-navigation/native';
 import { Container } from './styles';
 
 export function Home() {
-  const handleButtonPress = () => {
-    console.log('Button pressed');
+  const { navigate } = useNavigation();
+
+  const handleOpenStatistics = () => {
+    navigate('statistics');
   };
   return (
     <Container>
@@ -14,7 +17,7 @@ export function Home() {
         isPorcentageAbove60={false}
         completedPercentage={98.28}
         onPress={() => {
-          console.log('PercentageContainer pressed');
+          handleOpenStatistics();
         }}
         activeOpacity={0.7}
       />

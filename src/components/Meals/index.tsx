@@ -1,6 +1,7 @@
 import { Button } from '@components/Button';
 import { MealItem } from '@components/MealItem';
 import { MealsDataType } from '@models/meal';
+import { useNavigation } from '@react-navigation/native';
 import { useEffect, useState } from 'react';
 import { RefreshControl, SectionList, View } from 'react-native';
 import { Container, MealSectionLabel, NewMealText } from './styles';
@@ -143,9 +144,10 @@ const mealsData2 = [
 export function Meals() {
   const [sections, setSections] = useState<MealsDataType[]>([]);
   const [isRefreshing, setIsRefreshing] = useState(false);
+  const { navigate } = useNavigation();
 
   const handleButtonPress = () => {
-    console.log('Button pressed');
+    navigate('newMeal');
   };
 
   const handleRefresh = () => {
