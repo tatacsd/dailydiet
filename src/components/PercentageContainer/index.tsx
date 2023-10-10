@@ -7,18 +7,20 @@ import {
   ProgressText,
 } from './styles';
 
-type PercentageContainerProps = TouchableOpacityProps & {
+export type PercentageContainerProps = TouchableOpacityProps & {
   completedPercentage: number;
+  isPorcentageAbove60: boolean;
 };
 
 export function PercentageContainer({
   completedPercentage,
+  isPorcentageAbove60,
   ...rest
 }: PercentageContainerProps) {
   return (
-    <Container {...rest}>
+    <Container {...rest} isPorcentageAbove60={isPorcentageAbove60}>
       <OpenIconContainer>
-        <OpenIcon />
+        <OpenIcon isPorcentageAbove60={isPorcentageAbove60} />
       </OpenIconContainer>
       <ProgressText>{completedPercentage}%</ProgressText>
       <ProgressInfo>meals within the diet</ProgressInfo>

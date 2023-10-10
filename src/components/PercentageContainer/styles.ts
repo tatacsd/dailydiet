@@ -1,18 +1,26 @@
 import { ArrowUpRight } from 'phosphor-react-native';
 import { TouchableOpacity } from 'react-native';
 import styled, { DefaultTheme, css } from 'styled-components/native';
+import { PercentageContainerProps } from '.';
 
-export const Container = styled(TouchableOpacity)`
+export const Container = styled(TouchableOpacity)<PercentageContainerProps>`
   display: flex;
-  width: 327px;
+  width: 100%;
   padding: 8px;
   flex-direction: column;
 
   gap: 2px;
 
   border-radius: 8px;
-  background: ${({ theme }: { theme: DefaultTheme }) =>
-    theme.COLORS.GREEN_LIGHT};
+  background: ${({
+    theme,
+    isPorcentageAbove60,
+  }: { theme: DefaultTheme } & PercentageContainerProps) => {
+    console.log(isPorcentageAbove60);
+    return isPorcentageAbove60 === true
+      ? theme.COLORS.GREEN_LIGHT
+      : theme.COLORS.RED_LIGHT;
+  }};
 `;
 export const ProgressText = styled.Text`
   ${({ theme }: { theme: DefaultTheme }) =>
@@ -52,8 +60,14 @@ export const OpenIconContainer = styled.View`
 `;
 
 export const OpenIcon = styled(ArrowUpRight).attrs(
-  ({ theme }: { theme: DefaultTheme }) => ({
-    color: theme.COLORS.GREEN_DARK,
+  ({
+    theme,
+    isPorcentageAbove60,
+  }: { theme: DefaultTheme } & PercentageContainerProps) => ({
+    color:
+      isPorcentageAbove60 === true
+        ? theme.COLORS.GREEN_DARK
+        : theme.COLORS.RED_DARK,
     size: 24,
   })
 )`
