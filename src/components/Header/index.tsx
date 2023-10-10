@@ -1,6 +1,16 @@
 import logoImg from '@assets/logo.png';
 import profileImg from '@assets/profileImage.png';
-import { ContainerHome, Logo, ProfileContainer, ProfileImage } from './styles';
+import { useNavigation } from '@react-navigation/native';
+import { TouchableOpacity } from 'react-native';
+import {
+  ContainerAdding,
+  ContainerHome,
+  IconGoBack,
+  Logo,
+  ProfileContainer,
+  ProfileImage,
+  ScreenTitle,
+} from './styles';
 
 type HeaderType = 'HOME' | 'STATISTICS' | 'ADDING';
 
@@ -19,6 +29,31 @@ function renderHomeHeader() {
   );
 }
 
+function renderStatisticsHeader() {
+  return <></>;
+}
+
 export function Header({ type }: HeaderProps) {
-  return <>{type === 'HOME' && renderHomeHeader()}</>;
+  const { navigate } = useNavigation();
+  function handleGoBackButtonPress() {
+    navigate('home');
+  }
+  function renderAddingHeader() {
+    return (
+      <ContainerAdding>
+        <TouchableOpacity onPress={handleGoBackButtonPress}>
+          <IconGoBack />
+        </TouchableOpacity>
+        <ScreenTitle>Add new meal</ScreenTitle>
+      </ContainerAdding>
+    );
+  }
+
+  return (
+    <>
+      {type === 'HOME' && renderHomeHeader()}
+      {type === 'STATISTICS' && renderStatisticsHeader()}
+      {type === 'ADDING' && renderAddingHeader()}
+    </>
+  );
 }
